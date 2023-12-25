@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Music Player</title>
+    <script src="https://kit.fontawesome.com/0d184a2536.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section id="top-overlay">
+        <div class="misc">
+            <div class="openfile-wrapper">
+                <i class="fa-solid fa-upload"></i>
+                <input type="file" id="open-files" multiple>
+                <label for="open-files">Import Music</label>
+            </div>
+        </div>
+    </section>
+
+    <section id="bottom-overlay">
+        <audio controls src="" id="player"></audio>
+        <i class="fa-solid fa-compact-disc cover-art"></i>
+        <p class="song-title"></p>
+    
+        <div class="timeline-container">
+            <input type="range" min="0.0" value="0.0" max="100.0" step="1.0" class="timeline" oninput="setPlayhead(this.value)">
+            <div class="duration-container">
+                <p class="text-current">----</p>
+                <p class="text-duration">----</p>
+            </div>
+        </div>
+    
+    
+        <div id="button-holder">
+            <button id="prevtrack-btn" onclick="prevtrack()"><i class="fa-solid fa-backward-step"></i></button>
+            <button id="playtrack-btn" onclick="play_pause_track()"></button>
+            <button id="nexttrack-btn" onclick="nexttrack()"><i class="fa-solid fa-forward-step"></i></button>
+
+        </div>
+
+        <div class="misc-bottom">
+            <button class="shuffle-btn"><i class="fa-solid fa-shuffle"></i></button>
+            <a class="download-song" href="" download><i class="fa-solid fa-circle-down"></i></a>
+        </div>
+        <input type="range" min="0" max="1" step="0.1" value="1" class="vol-ctrl">
+
+    </section>
+
+</body>
+</html>
