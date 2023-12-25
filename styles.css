@@ -1,0 +1,170 @@
+:root {
+    --primary_theme: whitesmoke;
+    --secondary_theme: lightgray;
+    --third_theme: black;
+    --font-large: 4vh;
+    --font-medium: 3vh;
+    --font-small: 2vh;
+    --font-xsmall: 1vh;
+}
+
+html, body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    background-color: var(--primary_theme);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: var(--font-large);
+}
+h2 {
+    font-size: var(--font-medium);
+}
+p {
+    font-size: var(--font-small);
+}
+
+button {
+    border: none;
+    background: none;
+    color: var(--third_theme);
+    cursor: pointer;
+}
+
+
+input[type="range"] {
+    -webkit-appearance: none;
+    background-color: var(--primary_theme);
+    height: 10px;
+    border: none;
+    border-radius: 10px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 5px;
+    border-radius: 20px;
+    opacity: 1.0;
+    background: var(--third_theme);
+}
+
+#top-overlay {
+    background-color: var(--primary_theme);
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.misc {
+    display: flex;
+    justify-content: space-around;
+}
+
+.vol-ctrl {
+    display: none;
+}
+
+#bottom-overlay {
+    background-color: var(--secondary_theme);
+    height: 70%;
+    width: 100%;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;  
+    /* for cover art */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.song-title {
+    width: 80%;
+}
+
+.cover-art {
+    border: none;
+    font-size: 200px;
+    animation: coverartanim 5s linear 0s infinite normal;
+    transition: all 0.5s ease-out;
+    color: black;
+}
+
+@keyframes coverartanim {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+
+
+/* hiding the player */
+#player {
+    display: none;
+}
+
+#button-holder {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    height: 50px;
+}
+
+#nexttrack-btn, #playtrack-btn, #prevtrack-btn {
+    font-size: 20px;
+}
+
+.disable-link {
+    pointer-events: none;
+}
+
+.shuffle-btn, .download-song {
+    color: var(--third_theme);
+    font-size: 20px;
+}
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    padding: 0px 10px 0px 10px;
+}
+.duration-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5px 0px 5px;
+}
+
+.misc-bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#open-files {
+    display: none;
+}
+
+.openfile-wrapper {
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--third_theme);
+    color: var(--primary_theme);
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+}
