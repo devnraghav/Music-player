@@ -1,0 +1,300 @@
+:root {
+    --light_theme: rgb(247, 247, 247);
+    --light_dark_theme: rgb(201, 200, 206);
+    --dark_theme: rgb(52, 53, 60);
+    --font-large: 4vh;
+    --font-medium: 3vh;
+    --font-small: 2vh;
+    --font-xsmall: 12px;
+    --timeline-height: 4px;
+    --thumb-width: 0%;
+}
+html, body {
+    background-color: var(--light_theme);
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    font-size: var(--font-large);
+    line-height: 0;
+}
+h2 {
+    font-size: var(--font-medium);
+    line-height: 0;
+}
+p {
+    font-size: var(--font-small);
+    line-height: 0;
+}
+button {
+    border: none;
+    background: none;
+    color: var(--dark_theme);
+    cursor: pointer;
+}
+
+.timeline {
+    -webkit-appearance: none;
+    /* background-color: var(--light_dark_theme); */
+    background: linear-gradient(to right, var(--dark_theme) 0%, 
+    var(--dark_theme) var(--thumb-width), 
+    var(--light_dark_theme) var(--thumb-width));
+    height: var(--timeline-height);
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+.timeline::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: var(--dark_theme);
+    height: 15px;
+    width: 1%;
+    cursor: pointer;
+}
+/* hiding the player */
+#player {
+    display: none;
+}
+.shuffle-btn, #repeat-btn {
+    font-size: var(--font-small);
+    color: var(--light_dark_theme);
+}
+#prevtrack-btn, #playtrack-btn, #nexttrack-btn {
+    font-size: var(--font-large);
+    
+}
+
+/* refactored UI begins here */
+/* working on the carousel */
+
+
+.top-options {
+    color: var(--light_dark_theme);
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.music-carousel {
+    display: flex;
+    aspect-ratio: 16/9;
+    width: 100%;
+    /* keep track of the max-height */
+    max-height: 500px;
+    min-height: 350px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* hide scrollbar for firefox  */
+    scrollbar-width: none;
+
+    
+}
+.music-carousel::-webkit-scrollbar {
+    display: none;
+}
+.music-carousel .m-slide {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.m-slide img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: cover;
+    border-radius: 10px;
+    /* shadow at the bottom of the image */
+    box-shadow: 0 20px 30px -20px var(--dark_theme);
+}
+.bottom-player {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    position: relative;
+}
+.bottom-player .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 150%;
+    text-align: center;
+    width: 80%;
+}
+.info-wrapper {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info-wrapper .song-title, .song-artist {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 10px;
+    line-height: 50%;
+}
+.info-wrapper .song-artist {
+    color: var(--light_dark_theme);
+}
+.bottom-player .timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.timeline-wrapper .time-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.timeline-wrapper .time-wrapper p {
+    font-size: var(--font-small);
+    color: var(--light_dark_theme);
+}
+
+.controls-wrapper {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-options {
+    border-top-width: 1.5px;
+    border-top-style: solid;
+    border-top-color: var(--light_dark_theme);
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.bot-opt-btn {
+    font-size: var(--font-small);
+}
+.playlist-container {
+    background-color: var(--light_theme);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    /* top % change to drop down */
+    top: 0%;
+    left: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    /* for testing purposes */
+    /* opacity: 0.5; */
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 10%;
+    /* margin-top: 20px; */
+}
+#close-playlist-btn {
+    font-size: var(--font-medium);
+}
+.playlist-wrapper {
+    /* background-color: var(--light_dark_theme); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+    padding-top: 10px;
+}
+
+.track-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    /* background-color: var(--dark_theme); */
+    color: var(--dark_theme);
+    border-radius: 10px;
+    min-height: 60px;
+    text-wrap: nowrap;
+    gap: 10px;
+}
+.track-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin: 5px;
+}
+.track-info {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-weight: bold;
+}
+.track-artist {
+    font-size: var(--font-xsmall);
+}
+.track-duration {
+    margin: 15px;
+    font-weight: bold;
+}
+
+.track-burger {
+    display: flex;
+    align-items: flex-end;
+    height: 25%;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.burger-line {
+    width: 3px;
+    height: 0%;
+    background-color: rgb(130, 21, 29);
+    border-radius: 10px;
+
+    /* add the burger-anim keyframes animation to this selector */
+    animation: burger-anim 0.5s ease-in-out infinite alternate;
+}
+
+#burger-line-1 {
+    animation-delay: 0.3s;
+}
+#burger-line-2 {
+    animation-delay: 0.1s;
+}
+#burger-line-3 {
+    animation-delay: 0.2s;
+}
+
+/* keyframes for the burger animation */
+
+/* create animations for each burger line to change their heights */
+@keyframes burger-anim {
+    0% {
+        height: 0%;
+    }
+    50% {
+        height: 50%;
+    }
+    100% {
+        height: 100%;
+    }
+}

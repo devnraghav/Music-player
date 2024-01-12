@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Music Player</title>
+    <script src="https://kit.fontawesome.com/0d184a2536.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <!-- <script src="spotify-fetch.js" type="module" defer></script> -->
+</head>
+<body>
+    <!-- import music -->
+    <main>
+        <section class="top-options">
+            <i class="fa-solid fa-upload">
+                <input type="file" id="open-files" multiple> 
+            </i>
+            <button class="show-playlist"></button>
+
+        </section>
+
+        <section class="music-carousel">
+            <!-- carousel of music art work goes here -->
+            <!-- whichever art work is currently on as the slide, will be played. -->
+            <div class="m-slide">
+                <img id="cover-art-1" src="./Cover arts/stock CA.png" alt="Stock music cover art">
+            </div>
+        </section>
+
+        <section class="bottom-player">
+            <div class="info-wrapper">
+                <h2 class="song-title"></h2>
+                <p class="song-artist"></p>
+            </div>
+
+            <div class="timeline-wrapper">
+                <!-- timeline -->
+                <input type="range" min="0.0" value="0.0" max="100.0" step="1.0" class="timeline" oninput="setPlayhead(this.value)">
+                <div class="time-wrapper">
+                    <p class="text-current">----</p>
+                    <p class="text-duration">----</p>
+                </div>
+            </div>
+
+            <div class="controls-wrapper">
+                <button class="shuffle-btn"><i class="fa-solid fa-shuffle"></i></button>
+                <button id="prevtrack-btn" onclick="prevtrack()"><i class="fa-solid fa-backward"></i></button>
+                
+                <button id="playtrack-btn" onclick="play_pause_track()"></button>
+
+                <button id="nexttrack-btn" onclick="nexttrack()"><i class="fa-solid fa-forward"></i></button>
+                <button id="repeat-btn"><i class="fa-solid fa-repeat"></i></button>
+            </div>
+        </section>
+
+        <section class="bottom-options">
+            <!-- adding a few buttons -->
+
+            <button class="bot-opt-btn"><i class="fa-solid fa-home"></i></button>
+
+            <button class="bot-opt-btn" id="open-playlist-btn"><i class="fa-solid fa-list"></i></button>
+
+            <button class="bot-opt-btn"><i class="fa-solid fa-compact-disc"></i></button>
+
+            <button class="bot-opt-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            <button class="bot-opt-btn"><i class="fa-solid fa-user"></i></button>
+        </section>
+
+        <section class="playlist-container">
+            <div class="playlist-header">
+                <h2>Your Playlist</h2>
+                <button class="bot-opt-btn" id="close-playlist-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="playlist-wrapper">
+                <!-- playlist goes here -->
+                <!-- example track container -->
+                <div class="track-container">
+                    <img src="./Cover arts/stock CA.png" alt="Stock music cover art">
+                    <div class="track-info">
+                        <p >title of song</p>
+                        <small>artist of song</small>
+                    </div>
+                    <p class="track-duration">--:--</p>
+
+                    <div class="track-burger">
+                        <div class="burger-line" id="burger-line-1"></div>
+                        <div class="burger-line" id="burger-line-2"></div>
+                        <div class="burger-line" id="burger-line-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- player -->
+    <audio controls src="" id="player"></audio>
+
+    <a style="display: none;" class="download-song" href="" download><i class="fa-solid fa-circle-down"></i></a>
+</body>
+</html>
